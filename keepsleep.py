@@ -1,3 +1,8 @@
+#!/usr/bin/python
+# File : keepsleep.py
+# Desc : Starts infinite loop to keep connection with remote server alive 
+# Code : Ian Welty 2015-06-12
+
 from time import sleep
 from sys import stdout
 
