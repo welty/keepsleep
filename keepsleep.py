@@ -9,25 +9,19 @@ from sys import stdout
 i = 0
 switch = False
 
+while True:
 
-while True :
+    bar = ""    
+    dist = i % 20
+    
+    if dist % 20 == 0: 
+        switch = not switch
 
-	bar = ""	
-	dist = i % 20
-	
-	if dist % 20 == 0: 
-		switch = not switch
+    buf_type = "X" if switch else "#"
+    bar = buf_type * dist
 
-	if switch:
-		type = "X"
-	else:
-		type = "#"
+    stdout.write("\r...SLEEPING{0}".format(bar))
+    stdout.flush()
 
-	for j in range(0, dist):
-		bar = bar + type
-	
-	stdout.write("\r...SLEEPING%s" % bar)
-	stdout.flush()
-
-	sleep(1)
-	i+=1
+    sleep(1)
+    i+=1

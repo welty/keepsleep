@@ -1,5 +1,6 @@
 # keepsleep
-Python utility to prevent timeout due to inactivity while logged into remote server... 
-Stop it by sending a keyboard interrupt
+Micro utility to prevent timeout due to inactivity while logged into remote server.
 
-Call it like any python script: `python keepsleep.py`
+Prints a loading bar to stdout while running
+
+Stop it by sending a keyboard interrupt
