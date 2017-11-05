@@ -4,7 +4,6 @@
 # Code : Ian Welty 2015-06-12
 #          Updated Nov 2017
 
-
 # ----- Imports ----- #
 
 from __future__ import print_function
@@ -14,14 +13,13 @@ import signal
 
 # ------------------- #
 
-
 class Banner():
     """ Define the two characters that 
-    will alternate the in progress bar
+    will alternate in the progress bar
 
     Defaults:
-        major = "X"
-        minor = "#"
+        major = "#"
+        minor = "+"
     """
 
     def __init__(self, major="#", minor="+"):
@@ -29,25 +27,20 @@ class Banner():
         self.minor = minor
 
     def flip(self):
-        """ Swap the major and minor
-        progress bar characters
-        """
         self.major, self.minor = self.minor, self.major
 
 
 def signal_handler(signal, frame):
-    """ Exit Gracefully on SIGINT
+    """ Exit gracefully on SIGINT
     """
     print("\n\n-----------------------"
-          "\n   Script Terminated   "
+          "\n   Script Terminated     "
           "\n-----------------------\n")
     exit()
 
-
 # ------------------- #
 
-
-# Add a new line b/c it looks nicer
+# Add carraige return for look
 print("\r")
 
 # config vars
@@ -66,8 +59,8 @@ while True:
         banner.flip()
         ITER = 0
 
-    bar = banner.major * (dist + 1)
-    bar = bar + banner.minor * (BAR_LENGTH+1 - len(bar))
+    bar = banner.major * min((dist + 1), BAR_LENGTH-1)
+    bar = bar + banner.minor * (BAR_LENGTH - len(bar))
     rev_bar = bar[::-1]
 
     stdout.write("\r|--[ {} ]--[ SLEEPING ]--[ {} ]--|".format(rev_bar, bar))
